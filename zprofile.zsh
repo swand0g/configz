@@ -20,6 +20,9 @@ alias neo="nvim"
 ## Files
 alias l="exa -abhHl --no-user --git"
 
+## Updaters
+alias bup="bat cache --build && cp ~/.config/bat/config ~/developer/configs/bat.conf && echo \"Updated bat config! 🦇\""
+
 ## Functions
 function gimp() {
   git add .
