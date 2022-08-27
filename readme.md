@@ -6,3 +6,4 @@ Files for ZSH, Bash, Git, and other configuration things
 - [bat](https://github.com/sharkdp/bat)
 - [fzf](https://github.com/junegunn/fzf)
 - [delta](https://github.com/dandavison/delta)
+- [McFly](https://github.com/cantino/mcfly)
