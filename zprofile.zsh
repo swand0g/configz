@@ -28,7 +28,7 @@ function gimp() {
   git add .
   if [ "$1" != "" ]
   then
-      git commit -m "$1"
+      git commit -m "$*"
   else
       git commit -m "misc: update"
   fi
