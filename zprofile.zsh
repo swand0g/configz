@@ -35,6 +35,8 @@ function gimp() {
   git push origin HEAD
 }
 
+alias g="gimp"
+
 # PATH Overrides
 ## Python 3.10
 ## The original version is saved in .zprofile.pysave
