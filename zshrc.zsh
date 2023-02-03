@@ -18,7 +18,7 @@ function gimp {
   git push origin HEAD
 }
 
-function fi {
+function fz {
   fzf --preview 'cat {}'
 }
 
