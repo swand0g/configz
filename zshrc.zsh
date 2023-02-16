@@ -31,25 +31,6 @@ function path {
   echo $PATH | tr ':' '\n'
 }
 
-function pathrm {
-  if [ $# -lt 1 ]; then
-    echo "You should give at least one argument"
-    echo "For example"
-    echo "$0 /usr/local/bin"
-  else
-    FOLDERS_TO_REMOVE=`echo $@ | sed 's/ /|/g'`
-
-    echo "You actually PATH variable is:"
-    echo $PATH
-    echo "###"
-
-    PATH=$( echo ${PATH} | tr -s ":" "\n" | grep -vwE "(${FOLDERS_TO_REMOVE})" | tr -s "\n" ":" | sed "s/:$//" )
-
-    echo "Now you need to run"
-    echo "export PATH=$PATH"
-  fi
-}
-
 function tagadd {
   git tag $1
   git push origin $1
@@ -72,11 +53,11 @@ function logg {
   fi
 }
 
-function ll() {
+function ll {
   cd "$(llama "$@")"
 }
 
-ghpr() { 
+function prs { 
   GH_FORCE_TTY=100% gh pr list --limit 100 |
   fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view --comments {1}' --preview-window 'down,70%' --header-lines 3 |
   awk '{print $1}' |
