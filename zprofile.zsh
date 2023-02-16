@@ -3,49 +3,46 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(thefuck --alias)" 
 
-# Aliases
-## Git 
-alias get="git fetch && git pull"
-alias gat="git status"
-alias gim="git commit -m"
-alias gup="git push"
-alias dif="git diff"
-alias d="git diff"
-
-## Self
-alias zed="nvim ~/.zprofile"
-alias zup="source ~/.zprofile && cp ~/.zprofile ~/developer/configs/zprofile.zsh"
-alias zuprc="source ~/.zshrc && cp ~/.zshrc ~/developer/configs/zshrc.zsh"
-
-## Editors
-alias neo="nvim"
-
-## Files
-alias l="exa -abhHl --no-user --git"
-
-## Updaters
-alias bup="bat cache --build && cp ~/.config/bat/config ~/developer/configs/bat.conf && echo \"Updated bat config! 🦇\""
-
-## GIMP
-alias g="gimp"
-
-## Python
-alias python="python3"
-
-## Rust
-alias c="cargo"
-
 # PATH Overrides
-## Python 3.10
-## The original version is saved in .zprofile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
-export PATH
+function pathadd {
+  case ":$PATH:" in
+    *":$1:"*)
+      :
+      ;; # already there
+    *)
+      PATH="$1:$PATH" # or PATH="$PATH:$new_entry"
+      ;;
+  esac
+}
+
+## Custom BINs
+CUSTOM_BINS="$HOME/.bin"
+pathadd CUSTOM_BINS
 
 ## Deno
-export DENO_INSTALL="/Users/aj/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+export DENO_INSTALL="$HOME/.deno"
+pathadd "$DENO_INSTALL/bin"
 
-# Setting PATH for Python 3.11
-# The original version is saved in .zprofile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
+## Python 3.10
+## The original version is saved in .zprofile.pysave
+PYTHON_3_10_PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin"
+pathadd $PYTHON_3_10_PATH
+
+## Setting PATH for Python 3.11
+## The original version is saved in .zprofile.pysave
+PYTHON_3_11PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin"
+pathadd $PYTHON_3_11PATH
+
+## Golang
+GO_PATH="/Users/aj/go/bin"
+pathadd $GO_PATH
+
+## LLVM
+LLVM_PATH="$(brew --prefix llvm)/bin"
+
+## Debug path
+DPATH="/Users/aj/developer/chatcomm/bin"
+pathadd $DPATH
+
+## Export path
 export PATH
