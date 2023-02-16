@@ -34,7 +34,7 @@ function pathrm {
 
 ## Custom BINs
 CUSTOM_BINS="$HOME/.bin"
-pathadd CUSTOM_BINS
+pathadd $CUSTOM_BINS
 
 ## Deno
 export DENO_INSTALL="$HOME/.deno"
