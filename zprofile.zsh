@@ -57,5 +57,9 @@ pathadd $GO_PATH
 ## LLVM
 LLVM_PATH="$(brew --prefix llvm)/bin"
 
+## Autocomm
+AUTOCOMM_PATH="$HOME/Library/Application Support/autocomm"
+pathadd $AUTOCOMM_PATH
+
 ## Export path
 export PATH

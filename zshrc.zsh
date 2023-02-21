@@ -41,18 +41,6 @@ function tagrm {
   git push origin :refs/tags/$1
 }
 
-function logg {
-  if [ "$1" != "" ]; then
-    git -C ~/developer/log-7 add .
-    git -C ~/developer/log-7 commit -m "$*"
-    git -C ~/developer/log-7 push origin HEAD
-  else
-    git -C ~/developer/log-7 fetch
-    git -C ~/developer/log-7 pull
-    hx ~/developer/log-7/readme.md
-  fi
-}
-
 function ll {
   cd "$(llama "$@")"
 }
@@ -63,7 +51,6 @@ function prs {
   awk '{print $1}' |
   xargsrgs gh pr checkout
 }
-
 
 # Shell evals
 ## Mcfly (Great Scott!)
@@ -77,6 +64,9 @@ eval "$(fnm env --use-on-cd)"
 
 ## FZF (Fuzzy Finder)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## Confidential 🥷
+source ~/developer/configs/confidential.sh
 
 # Aliases
 ## Git 
@@ -119,6 +109,3 @@ alias goto-brews="z /opt/homebrew/Cellar"
 ## Misc
 ### Iterm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# autocomm
-export PATH="/Users/aj/Library/Application Support/autocomm:$PATH"
